@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <title>perspective scrolling in css| Nothing4us</title>
+    <link rel="style" href="stylesheet.css">
+    <style>
+     @charset "UTF-8";
+    *, *:before, *:after{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+    .group:after{
+    content: "";
+    display: table;
+    clear: both;
+}
+html,body{
+    width: 100%;
+    height: 100%;
+}
+body{
+    font-family: "myriad pro", sens-serif;
+    font-size: 100%;
+    line-height: 1.5;
+    color: #787878;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+}
+@media(max-width:600px){
+    body{
+        font-size: 70%;
+    }
+}a{
+    text-decoration: none;
+    color: #08c;
+}
+strong{
+    font-weight: normal;
+    color: #303030;
+}
+.wrap-3d{
+    width: 100%;
+    height: 100%;
+    max-height: 100%;
+    padding-top: 5%;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+    background-color: #f0f0f0;
+    transform-style: preserve-3d;
+    perspective: 150rem;
+    perspective-origin: 50% 110%;
+}
+.item-3d{
+    width: 100%;
+    margin-top: 20%;
+    padding-top: 10%;
+    padding-bottom: 5%;
+    transform-origin: 50% 100%;
+    transform-style: preserve-3d;
+}
+@media(max-width:600px){
+    .item-3d{
+        margin-bottom: 40%;
+    }
+}
+.ground{
+    position: absolute;
+    top:0;
+    right: -50%;
+    bottom: 0;
+    left: -50%;
+    width: 200%;
+    margin: 0 auto;
+    background-image: linear-gradient(#d8d8d8, #f2f2f2, 60%);
+    background-size: 100%;
+    transform-origin: 50% 100%;
+    transform: rotateX(70deg);
+    transform-style: preserve-3d;
+    /* -webkit-backface-visibility: hidden;
+                -moz-backface-visibility: hidden; */
+}
+.item-img{
+    height: 20%;
+    width: 20%;
+}
+.ground:before, .group:after{
+    content: "";
+    position: absolute;
+    width: 100%;
+}
+.ground:before{
+    top: 0;
+    left: 50%;
+    height: 100%;
+    width: 50%;
+    max-width: 50rem;
+    background-image: redial-gradient(#cccccc rgba(204 204 204 0)60%);
+    background-size: 50% 80%;
+    background-repeat: no-repeat;
+    transform: translateX(-50%);
+}
+.group:after{
+    bottom: -500px;
+    left: 0;
+    height: 500px;
+    background-image: linear-gradient(#d8d8d8, #f2f2f2);
+    transform-origin: 50% 0;
+    transform:rotate(-70deg);
+}
+.item-3d:nth-child(even) .ground:before{
+    background-position: 100% 50%;
+    -webkit-animation: floating-shadow-r 5s -1s infinite;
+            animation: floating-shadow-r 5s -1s infinite;
+}
+.item-3d.item-3d:nath-child(odd) .ground:before{
+    background-position: 100% 50%;
+    -webkit-animation: floating-shadow-r 5s -1s infinite;
+            animation: floating-shadow-r 5s -1s infinite;
+}
+.intro h1{
+    font-size: 250%;
+    font-weight: normal;
+    color: #303030;
+}
+.intro p{
+    margin-bottom: 2rem;
+    font-size: 175%;
+    line-height: 1.4288;
+}
+.footer{
+    padding: 0 2rem;
+    text-align: center;
+    transform: translateZ(0);
+
+}
+.footer a{
+    display: inline-block;
+    position: relative;
+    color: #303030;
+}
+.footer a:before{
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: 3px;
+    left: 0;
+    height: 1px;
+    background-color: #303030;
+    opacity: 0;
+    transition: opacity 0.25s;
+}
+.footer a:hover:before, .footer a:active::before, .footer a:focus::before{
+    opacity: 0.5s;
+}
+    </style>
+</head>
+<body>
+    <section class="wrap-3d">
+        <div class="item-3d">
+            <span class="ground"></span>
+            <figure class="item-content group">
+                <div class="item-img">
+                    <img src="watch.jpg" alt="" width="100%" height="100%">
+                </div>
+                <figcaption class="item caption">
+                    <p>
+                        <strong>Sport band</strong><br>
+                        White fluroelastomer<br>
+                        Stainless steel pin
+                    </p>
+                    <p>
+                        <a href="#">View 38mm in the store</a><br>
+                        <a href="#">View 42mm in the store</a>
+                    </p>
+                </figcaption>
+            </figure>
+        </div>
+        <div class="item-3d">
+            <span class="ground"></span>
+            <figure class="item-content group">
+                <div class="item-img">
+                        <img src="" alt="">
+                </div>
+                <figcaption class="item-content">
+                    <p>
+                        <strong>38mm and 42mm case</strong><br>
+                        7000 serias silver aluminum<br>
+                        Ion-X Glass<br>
+                        Ratina Display<br>
+                        composite back
+                    </p>
+                    <p>
+                        <strong>Sport band</strong><br>
+                        blue fluroelastomer<br>
+                        Stainless steel pin
+                    </p>
+                    <p>
+                        <a href="https://www.flipkart.com/apple-watch-series-6-gps-cellular/p/itm0fa2f651df94f?pid=SMWFVNKGRHJ9YAEB&lid=LSTSMWFVNKGRHJ9YAEBOZKRMK&marketplace=FLIPKART&sattr[]=color&sattr[]=display_size&st=color">View 38mm in the store</a><br>
+                        <a href="#">View 42mm in the store</a>
+                    </p>
+                </figcaption> 
+            </figure>
+        </div>
+        <div class="item-3d">
+            <span class="ground"></span>
+            <figure class="item-content group">
+                <div class="item-img">
+                    <img src="screen3.png" alt="">
+                </div>
+                <figcaption class="item-caption">
+                    <p>
+                        <strong>38mm and 42mm case</strong><br>
+                        7000 serias silver aluminum<br>
+                        Ion-X Glass<br>
+                        Ratina Display<br>
+                        composite back
+                    </p>
+                    <p>
+                        <strong>Sport band</strong><br>
+                        blue fluroelastomer<br>
+                        Stainless steel pin
+                    </p>
+                    <p>
+                        <a href="https://www.flipkart.com/apple-watch-series-6-gps-cellular/p/itm0fa2f651df94f?pid=SMWFVNKGRHJ9YAEB&lid=LSTSMWFVNKGRHJ9YAEBOZKRMK&marketplace=FLIPKART&sattr[]=color&sattr[]=display_size&st=color">View 38mm in the store</a><br>
+                        <a href="#">View 42mm in the store</a>
+                    </p>
+                </figcaption>
+            </figure>
+        </div>
+        <div class="item-3d">
+            <span class="ground"></span>
+            <figure class="item-content group">
+                <div class="item-img">
+                    <img src="screen2.png" alt="">
+                </div>
+                <figcaption class="item-caption">
+                    <p>
+                        <strong>38mm and 42mm case</strong><br>
+                        7000 serias silver aluminum<br>
+                        Ion-X Glass<br>
+                        Ratina Display<br>
+                        composite back
+                    </p>
+                    <p>
+                        <strong>Sport band</strong><br>
+                        blue fluroelastomer<br>
+                        Stainless steel pin
+                    </p>
+                    <p>
+                        <a href="https://www.flipkart.com/titan-smart-2-1-78-amoled-display-premium-metal-body-100-watchfaces-smartwatch/p/itm8448c71420491?pid=SMWGEHG5ZDFP7URY&lid=LSTSMWGEHG5ZDFP7URYNV8IYR&marketplace=FLIPKART&fm=productRecommendation%2Fsimilar&iid=en_vvC77Qq2CscvBSioeU6mh%2F7ahdyvW1AuCQrY7fzSGARm%2BaSwZvxEFVhEDs93bwvW36ZshwWsX9o1qIgMlkJMug%3D%3D&ppt=pp&ppn=pp&ssid=gel4xlg1eo0000001676200713832&otracker=pp_reco_Similar%2BProducts_2_34.productCard.PMU_HORIZONTAL_Titan%2BSmart%2B2%2Bwith%2B1.78%2BAMOLED%2BDisplay%2B%2526%2BPremium%2BMetal%2BBody%252C%2B100%252B%2BWatchfaces%2BSmartwatch_-1_productRecommendation%2Fsimilar_1&otracker1=pp_reco_PINNED_productRecommendation%2Fsimilar_Similar%2BProducts_GRID_productCard_cc_2_NA_view-all&cid=-1">View 38mm in the store</a><br>
+                        <a href="#">View 42mm in the store</a>
+                    </p>
+                </figcaption>
+            </figure>
+        </div>
+        <div class="item-3d">
+            <span class="ground"></span>
+            <figure class="item-content group">
+                <div class="item-img">
+                    <img src="screen.png" alt="">
+                </div>
+                <figcaption class="item-caption">
+                    <p>
+                        <strong>38mm and 42mm case</strong><br>
+                        7000 serias silver aluminum<br>
+                        Ion-X Glass<br>
+                        Ratina Display<br>
+                        composite back
+                    </p>
+                    <p>
+                        <strong>Sport band</strong><br>
+                        blue fluroelastomer<br>
+                        Stainless steel pin
+                    </p>
+                    <p>
+                        <a href="#">View 38mm in the store</a><br>
+                        <a href="#">View 42mm in the store</a>
+                    </p>
+                </figcaption>
+            </figure>
+        </div>
+        <footer class="footer">
+            <p>Nothing4us<a href="" target="_blank"></a></p>
+        </footer>
+    </section>
+</body>
+</html>
